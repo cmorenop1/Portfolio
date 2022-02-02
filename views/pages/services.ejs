@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+</head>
+
+<body>
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+  <div class="hero-unit">
+    <h1>
+      <%= title %>
+    </h1>
+  </div>
+
+  <div class="wrapper_services">
+    <div class="container">
+      <div class="row">
+
+        <div class="span4">
+          <img class="bs-icon" style="width:170px;height:170px;margin-right:15px;" src="/images/email.png">
+          <h2>Web Development</h2>
+          <p>We provide web application development and web maintenance services</p>
+        </div>
+
+        <div class="span4">
+          <img class="bs-icon" style="width:170px;height:170px;margin-right:15px;" src="/images/iphone.png">
+          <h2>App Development</h2>
+          <p>We develop apps so that your product or service appears in <b>Google Play</b> and <b>App Store</b></p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <%- include('../partials/footer'); %>
+</body>
+
+</html>

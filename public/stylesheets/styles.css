@@ -5,6 +5,7 @@
   align-items: center;
   height: 100vh;
 }
+
 .wrapper-home .hero-unit {
   width: 100%;
   text-align: center;
@@ -14,9 +15,11 @@
 .about_wrapper .profile {
   text-align: center;
 }
+
 .about_wrapper .profile img {
   border-radius: 5%;
 }
+
 .profile_wrapper {
   display: flex;
   justify-content: center;
@@ -24,14 +27,17 @@
   text-align: center;
   flex-direction: column;
 }
+
 .card_profile {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .profile_wrapper .title {
   margin: 10px 0;
 }
+
 .profile-description {
   max-width: 40%;
   padding: 20px;
@@ -54,6 +60,7 @@
   .card_profile {
     flex-direction: column;
   }
+
   .profile-description {
     max-width: 100%;
     padding: 0px;
@@ -87,6 +94,7 @@
   max-height: 100%;
   object-fit: cover;
 }
+
 .card-body {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
@@ -98,6 +106,14 @@
   display: flex;
   justify-content: space-around;
 }
+
+.services_wrapper .row {
+  display: flex;
+  justify-content: space-around;
+  width: 100px;
+  max-width: 100px;
+}
+
 .caption {
   font-weight: bold;
   font-size: 14px;
@@ -110,6 +126,7 @@
     flex-direction: column;
     align-items: center;
   }
+
   .projects_wrapper .box {
     margin-top: 10px;
   }
