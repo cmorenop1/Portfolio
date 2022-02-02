@@ -1,21 +1,47 @@
 <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <a class="brand" href="/"> <img  src="/images/logo.png"  width="35px"></a>
-        <div class="nav-collapse">
-          <ul class="nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/about">About Me</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/services">Services</a></li>
-            <li><a href="/contact">Contact me</a></li>
-          </ul>
-        </div>
-      </div>  
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/"> <img src="/images/logo.png" width="35px"></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+
+          <% if (title=="Home"){ %>
+          <li class="active"><a href="/">Home</a></li>
+          <% }else{ %>
+          <li class="nav"><a href="/">Home</a></li>
+          <% }%>
+
+          <% if (title=="About"){ %>
+          <li class="active"><a href="/about">Home</a></li>
+          <% }else{ %>
+          <li class="nav"><a href="/about">Home</a></li>
+          <% }%>
+
+          <% if (title=="Projects"){ %>
+          <li class="active"><a href="/projects">Projects</a></li>
+          <% }else{ %>
+          <li class="nav"><a href="/projects">Projects</a></li>
+          <% }%>
+
+          <% if (title=="Services"){ %>
+          <li class="active"><a href="/services">Services</a></li>
+          <% }else{ %>
+          <li class="nav"><a href="/services">Services</a></li>
+          <% }%>
+
+          <% if (title=="Contact"){ %>
+          <li class="active"><a href="/contact">Contact</a></li>
+          <% }else{ %>
+          <li class="nav"><a href="/contact">Contact</a></li>
+          <% }%>
+
+        </ul>
+      </div>
     </div>
   </div>
+</div>
