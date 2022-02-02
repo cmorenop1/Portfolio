@@ -1,3 +1,7 @@
+.nav-collapse .nav .actve {
+  box-sizing: border-box;
+}
+
 /*Home*/
 .wrapper-home {
   display: flex;
