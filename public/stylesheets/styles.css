@@ -1,5 +1,10 @@
-.nav-collapse .nav .actve {
-  box-sizing: border-box;
+#projects_final { 
+  height: 650px;
+}
+
+.nav-collapse .nav {
+  overflow: hidden;
+  position: fixed;
 }
 
 /*Home*/
