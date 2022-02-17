@@ -4,42 +4,48 @@
 
       <ul class="nav">
 
-        <a href="/" class="pull-left"><img src="/images/logo.png" style="max-width:60px;width:100%"></a> 
-
+        <a href="/" class="pull-left"><img src="/images/logo.png"
+            style="max-width:70px;width:100%; margin-top:0px;"></a>
 
         <% if (title=="Home"){ %>
-        <li class="active"><a href="/">Home</a></li>
+        <li class="active" style="margin-top:3px;"><a href="/">Home</a></li>
         <% }else{ %>
-        <li><a href="/">Home</a></li>
+        <li style="margin-top:3px;"><a href="/">Home</a></li>
         <% }%>
 
         <% if (title=="About"){ %>
-        <li class="active"><a href="/about">About</a></li>
+        <li class="active" style="margin-top:3px;"><a href="/about">About</a></li>
         <% }else{ %>
-        <li><a href="/about">About</a></li>
+        <li style="margin-top:3px;"><a href="/about">About</a></li>
         <% }%>
 
         <% if (title=="Projects"){ %>
-        <li class="active"><a href="/projects">Projects</a></li>
+        <li class="active" style="margin-top:3px;"><a href="/projects">Projects</a></li>
         <% }else{ %>
-        <li><a href="/projects">Projects</a></li>
+        <li style="margin-top:3px;"><a href="/projects">Projects</a></li>
         <% }%>
 
         <% if (title=="Services"){ %>
-        <li class="active"><a href="/services">Services</a></li>
+        <li class="active" style="margin-top:3px;"><a href="/services">Services</a></li>
         <% }else{ %>
-        <li><a href="/services">Services</a></li>
+        <li style="margin-top:3px;"><a href="/services">Services</a></li>
         <% }%>
 
         <% if (title=="Contact"){ %>
-        <li class="active"><a href="/contact">Contact</a></li>
+        <li class="active" style="margin-top:3px;"><a href="/contact">Contact</a></li>
         <% }else{ %>
-        <li><a href="/contact">Contact</a></li>
+        <li style="margin-top:3px;"><a href="/contact">Contact</a></li>
         <% }%>
 
-
       </ul>
+      <% if (typeof userName == 'string' && userName) { %>
+        <a class="nav-link" href="/users/signout" onclick="return confirm('Are you sure?')">Sign Out (<%= userName %>)</a>
+      <% } else { %>
 
+        
+        <a class="pull-right btn btn-success btn-large" style="max-width:60px;max-height:30px;margin-bottom: 5px;"
+          href="/users/signup">Sign in</a>
+      <% } %>            
     </div>
   </div>
 </div>

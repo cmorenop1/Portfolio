@@ -1,7 +1,5 @@
 exports.home = (req, res, next) => {
-    res.render('home', {
-        title: 'Home'
-    });
+    res.render(  'home'    , {title: 'Home'}       );
 }
 
 exports.about = (req, res, next) => {
@@ -25,5 +23,15 @@ exports.services = (req, res, next) => {
 exports.contact = (req, res, next) => {
     res.render('contact', {
         title: 'Contact'
+    });
+}
+exports.login = (req, res, next) => {
+    res.render('login', {
+        title: 'Login'
+    });
+}
+exports.business = (req, res, next) => {
+    res.render('business', {
+        title: 'Business Contact'
     });
 }

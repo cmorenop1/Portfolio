@@ -1,13 +1,41 @@
 var createError = require('http-errors');
-var express = require('express');
 var path = require('path');
+
+var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
+let flash = require('connect-flash')
+let passportConfig = require('./config/passport')
+let passport = require('passport');
+
+let mongoose = require('mongoose');
+
+
+//db mongo setup
+let db = require('./config/db')
+
+//passportConfig
+let  passport2 = passportConfig()
+
+//console.log(db.connection.uri)
+mongoose.connect(db.connection.uri,(err,res)=>{
+  if(err) console.error(err)
+  if(res) console.log('🍁 connected to Atlas ❤️')
+})
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+app.use(session({
+  saveUninitialized: true,
+  resave: true,
+  secret: 'sessionSecret'
+}))
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views/pages'));
@@ -18,7 +46,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, './views')));
+//app.use(express.static(path.join(__dirname, './node_modules')));
+//app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
 
+// Sets up passport
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session()); 
+
+
+//definicion de rutas
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 

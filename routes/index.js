@@ -17,4 +17,10 @@ router.get('/services', indexController.services);
 /* GET contact page. */
 router.get('/contact', indexController.contact);
 
+/* GET contact page. */
+router.get('/login', indexController.login);
+
+/* GET contact page. */
+router.get('/business', indexController.business);
+
 module.exports = router;
