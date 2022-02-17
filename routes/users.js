@@ -10,9 +10,32 @@ router.get('/', function(req, res, next) {
 
 
 //sign-up (register)
+
+
+//this have to return something → [res.redirect]
 router.get('/signup', userController.renderSignUp);
+
+
+//this have to return something → [res.redirect]
 router.post('/signup', userController.signup);
+
+
+
+
+
+//router.post('/signup', userController.signup);
+
  
+
+
+
+
+
+
+
+
+
+
 // Sign-in (login)
 router.get('/signin', userController.renderSignin);
 //router.post('/signin', userController.signin);

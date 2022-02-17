@@ -43,38 +43,30 @@ function getErrorMessage(err) {
 };
 
 
-module.exports.renderSignUp = function (req, res, next) {  
+module.exports.renderSignUp = function (req, res, next) {
 
-  console.debug('## DENTRO DE → module.exports.renderSignUp')
   //if I don't have the user → it is not authenticated
   if (!req.user) {
-    
+
     //as we don't have an user, we proceed to create one
     let newUser = User()
-    
+
     //console.log(`user is: ${newUser}`)
-    
+
     res.render('auth/signup', {
       title: 'Sign up form',
       messages: req.flash('error'),
-
-      //here we are going to inject that new user to → the .ejs template [auth/signup]
       user: newUser
     })
 
   } else {
-
-    console.debug('fuera')
-    
     return res.redirect('/')
   }
 }
 
-  
-module.exports.signup = function(req, res, next) {
 
-  console.debug('## DENTRO DE → module.exports.signup')
-  
+module.exports.signup = function (req, res, next) {
+
   if (!req.user) {
     console.log(req.body);
 
@@ -84,46 +76,34 @@ module.exports.signup = function(req, res, next) {
 
     user.save((err) => {
 
-      // if (err) {
-      //   let message = getErrorMessage(err);
+      if (err) {
+        let message = getErrorMessage(err);
 
-      //   req.flash('error', message);
-      //   // return res.redirect('/users/signup');
-      //   return res.render('auth/signup', {
-      //     title: 'Sign-up Form',
-      //     messages: req.flash('error'),
-      //     user: user
-      //   });
-      // }
+        req.flash('error', message);
+        // return res.redirect('/users/signup');
+        return res.render('auth/signup', {
+          title: 'Sign-up Form',
+          messages: req.flash('error'),
+          user: user
+        });
+      }
 
       req.login(user, (err) => {
-
-        console.log('ESTOY AQUI 1 → req.login(user, (err) => {')
-
         console.log(user)
+        if (err) return next(err);
+      });
 
-        
-        
-        //if (err) return next(err);
-        console.log('ESTOY AQUI 2 → if (err) return next(err);')
-
-        console.log(getAllMethods(res))
-
-        
-        return res.redirect('');
-        
-       });
     });
+    return res.redirect(301, '/')
 
   } else {
     return res.redirect('/');
   }
-};  
 
-function getAllMethods(object) {
-  return Object.getOwnPropertyNames(object).filter(function(property) {
-      return typeof object[property] == 'function';
-  });
+};
+
+
+
+function test(res) {
+  return res.send('this works')
 }
-
-//console.log(getAllMethods(Math));
