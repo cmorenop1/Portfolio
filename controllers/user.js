@@ -15,8 +15,23 @@ module.exports.renderSignin = function (req, res, next) {
   }
 };
 
+module.exports.signin = function (req, res, next) {
+
+  console.debug('.:: LOGIN ATTEMPT ::.')
+
+  //no esta encontrando la vista
+  passport.authenticate('local', {
+    successRedirect: req.session.url || 'users/about',
+    failureRedirect: '/signin',
+    failureFlash: true
+  })(req, res, next);
+  delete req.session.url;
+}
+
+
 function getErrorMessage(err) {
   console.log("===> Error: " + err);
+  console.error(` ERROR: ${err}`);
   let message = '';
 
   if (err.code) {
@@ -40,6 +55,8 @@ function getErrorMessage(err) {
 
 module.exports.renderSignUp = function (req, res, next) {
 
+  console.log('.:: RENDERING FORM - WAITING FOR SUBMIT ACTION ::.')
+
   //if I don't have the user → it is not authenticated
   if (!req.user) {
 
@@ -61,6 +78,8 @@ module.exports.renderSignUp = function (req, res, next) {
 
 
 module.exports.signup = function (req, res, next) {
+
+  console.log('.:: PROCESING - REGISTER A NEW USER ::.')
 
   if (!req.user) {
     console.log(req.body);
@@ -95,4 +114,9 @@ module.exports.signup = function (req, res, next) {
     return res.redirect('/');
   }
 
+};
+
+module.exports.signout = function (req, res, next) {
+  req.logout();
+  res.redirect('/');
 };

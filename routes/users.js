@@ -24,7 +24,15 @@ router.post('/signup', userController.signup);
  * → GET
  * → POST
  */
-router.post('/signin', userController.renderSignin);
+router.get('/signin', userController.renderSignin);
+router.post('/signin', userController.signin);
+
+/**
+ * SIGN-OUT
+ * → GET
+ * → POST
+ */
+router.get('/signout', userController.signout);
 
 
 

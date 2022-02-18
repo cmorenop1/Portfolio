@@ -38,14 +38,14 @@
         <% }%>
 
       </ul>
-      <% if (typeof userName == 'string' && userName) { %>
-        <a class="nav-link" href="/users/signout" onclick="return confirm('Are you sure?')">Sign Out (<%= userName %>)</a>
+      <% if (typeof userName != 'undefined') { %>
+      <!-- <a class="nav-link" href="/users/signout" onclick="return confirm('Are you sure?')">Sign Out (<%= userName %>)</a> -->
+      <a class="pull-right btn btn-success btn-large" style="max-width:60px;max-height:30px;margin-bottom: 5px;"
+        href="/users/signout">Sign out</a>
       <% } else { %>
-
-        
-        <a class="pull-right btn btn-success btn-large" style="max-width:60px;max-height:30px;margin-bottom: 5px;"
-          href="/users/signup">Sign in</a>
-      <% } %>            
+      <a class="pull-right btn btn-success btn-large" style="max-width:60px;max-height:30px;margin-bottom: 5px;"
+        href="/users/signin">Sign in</a>
+      <% } %>
     </div>
   </div>
 </div>
