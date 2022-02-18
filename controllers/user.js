@@ -3,20 +3,15 @@ let passport = require('passport');
 
 module.exports.renderSignin = function (req, res, next) {
 
-  //DEBUG  
   if (!req.user) {
-    console.debug('dentro del if')
 
-    res.render('auth/login', {
-      title: 'Login Form',
-      //messages: req.flash('error') || req.flash('info')
+    res.render('auth/signin', {
+      title: 'Sign-in Form',
+      messages: req.flash('error') || req.flash('info')
     });
-
-
   } else {
-    // console.log(req.user);
-    // return res.redirect('/');
-    console.debug('dentro del else')
+    console.log(req.user);
+    return res.redirect('/');
   }
 };
 
@@ -101,9 +96,3 @@ module.exports.signup = function (req, res, next) {
   }
 
 };
-
-
-
-function test(res) {
-  return res.send('this works')
-}

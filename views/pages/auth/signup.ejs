@@ -10,11 +10,14 @@
         <%- include('../../partials/header'); %>
     </header>
 
-    <div class="container">
+    <div class="hero-unit">
 
         <!-- 
             At this point: we are going to perform a POST method, to send the data to the backend
         -->
+        <h1><%- title %></h1>
+        <br>
+
         <form action="/users/signup" method="post" validate>
             <div class="form-group">
                 <label>First Name:</label>
@@ -45,7 +48,7 @@
             <div>
                 <input class="btn btn-primary" type="submit" value="Sign-up" />
             </div>
-            
+
         </form>
     </div>
 

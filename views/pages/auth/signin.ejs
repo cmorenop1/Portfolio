@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../../partials/head'); %>
+</head>
+
+<body>
+    <header>
+        <%- include('../../partials/header'); %>
+    </header>
+
+    <div class="hero-unit">
+        <div class="row">
+            <!-- 
+                At this point: we are going to perform a POST method, to send the data to the backend
+        -->
+
+            <h1><%- title %></h1>
+            <br>
+
+            <%for (var i in messages) { %>
+            <div class="flash">
+                <%- messages[i] %>
+            </div>
+            <% } %>
+
+            <form action="/users/signin" method="post">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="passworrd" class="form-control" />
+                </div>
+
+                <div>
+                    <input class="btn btn-primary" type="submit" value="Sign in" />
+                </div>
+                <br>
+                <div class="form-group">
+                    <a href="/users/signup" style="text-decoration: none;">
+                        <i class="fas fa-user-plus">
+                            Sign-up
+                        </i>
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <%- include('../../partials/footer'); %>
+</body>
+
+
+</html>

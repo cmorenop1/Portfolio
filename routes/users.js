@@ -4,28 +4,32 @@ let userController = require('../controllers/user')
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.send('this works');
 });
 
 
 //sign-up (register)
 
-
-//this have to return something → [res.redirect]
+/**
+ * SIGN-UP
+ * → GET
+ * → POST
+ */
 router.get('/signup', userController.renderSignUp);
-
-
-//this have to return something → [res.redirect]
 router.post('/signup', userController.signup);
 
+/**
+ * SIGN-IN
+ * → GET
+ * → POST
+ */
+router.post('/signin', userController.renderSignin);
 
 
 
 
-//router.post('/signup', userController.signup);
 
- 
 
 
 
