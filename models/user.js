@@ -19,7 +19,7 @@ let UserSchema = mongoose.Schema(
         password: {
             type: String,
             validate: [(password) => {
-                return password && password.length > 6;
+                return password && password.length > 1;
             }, 'Password should be longer']
         },
         salt: String,

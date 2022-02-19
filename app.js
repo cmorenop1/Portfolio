@@ -27,6 +27,7 @@ mongoose.connect(db.connection.uri, (err, res) => {
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const { Console } = require('console');
 
 var app = express();
 
@@ -35,7 +36,6 @@ app.use(session({
   resave: true,
   secret: 'sessionSecret'
 }))
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views/pages'));
@@ -58,14 +58,18 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
+//define variables to be used within ejs
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  res.locals.login = req.isAuthenticated();
+  next();
+});
 
 //definicion de rutas
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-// catch 404 and forward to error handler
+// catch 404 an forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });

@@ -38,8 +38,8 @@
         <% }%>
 
       </ul>
-      <% if (typeof userName != 'undefined') { %>
-      <!-- <a class="nav-link" href="/users/signout" onclick="return confirm('Are you sure?')">Sign Out (<%= userName %>)</a> -->
+      <% if (login) { %>
+      <!-- <a class="nav-link" href="/users/signout" onclick="return confirm('Are you sure?')">Sign Out ()</a> -->
       <a class="pull-right btn btn-success btn-large" style="max-width:60px;max-height:30px;margin-bottom: 5px;"
         href="/users/signout">Sign out</a>
       <% } else { %>

@@ -8,7 +8,7 @@ module.exports = function(){
         done(null, user.id)
     })
 
-    passport.deserializeUser(()=>{
+    passport.deserializeUser((id, done)=>{
         User.findOne({_id: id}, '-password -salt', (err, user)=>{
             done(err,user)
         })

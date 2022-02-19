@@ -4,7 +4,6 @@ let passport = require('passport');
 module.exports.renderSignin = function (req, res, next) {
 
   if (!req.user) {
-
     res.render('auth/signin', {
       title: 'Sign-in Form',
       messages: req.flash('error') || req.flash('info')
@@ -15,14 +14,21 @@ module.exports.renderSignin = function (req, res, next) {
   }
 };
 
+module.exports.renderBusiness = function (req, res, next) {
+  if (req.user) {
+    res.render('business', {
+      title: 'Business',
+      messages: req.flash('error') || req.flash('info')
+    });
+  } else {
+    return res.redirect('/');
+  }
+};
+
 module.exports.signin = function (req, res, next) {
-
-  console.debug('.:: LOGIN ATTEMPT ::.')
-
-  //no esta encontrando la vista
   passport.authenticate('local', {
-    successRedirect: req.session.url || 'users/about',
-    failureRedirect: '/signin',
+    successRedirect: '/users/business',
+    failureRedirect: '/users/signin',
     failureFlash: true
   })(req, res, next);
   delete req.session.url;
@@ -79,20 +85,14 @@ module.exports.renderSignUp = function (req, res, next) {
 
 module.exports.signup = function (req, res, next) {
 
-  console.log('.:: PROCESING - REGISTER A NEW USER ::.')
-
   if (!req.user) {
     console.log(req.body);
 
     let user = new User(req.body);
 
-    console.log(user);
-
     user.save((err) => {
-
       if (err) {
         let message = getErrorMessage(err);
-
         req.flash('error', message);
         // return res.redirect('/users/signup');
         return res.render('auth/signup', {
