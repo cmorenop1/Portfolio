@@ -61,11 +61,35 @@ module.exports.process = function (req, res, next) {
   console.log('.:: SAVING ::.')
 
   let newBusinessContact = businessModel({
+
     _id: Date.now().toString(),
     id: Date.now().toString(),
-    contactName: req.body.name,
-    contactNumber: req.body.number,
-    email: req.body.email,
+    contactName: req.body.name.toString(),
+    contactNumber: req.body.number.toString(),
+    email: req.body.email.toString(),
+
+  });
+
+  res.send(newBusinessContact);
+
+};
+
+
+
+module.exports.editContact = function (req, res, next) {
+
+  let id = req.params.id;
+
+  console.log(` .:: Edit Contact ::. ${id}` )
+
+  let newBusinessContact = businessModel({
+
+    _id: Date.now().toString(),
+    id: Date.now().toString(),
+    contactName: req.body.name.toString(),
+    contactNumber: req.body.number.toString(),
+    email: req.body.email.toString(),
+
   });
 
   res.send(newBusinessContact);
@@ -167,3 +191,27 @@ module.exports.signout = function (req, res, next) {
   req.logout();
   res.redirect('/');
 };
+
+
+
+
+module.exports.displayEditPage = (req, res, next) => {
+  let id = req.params.id;
+
+  businessModel.findById(id, (err, itemToEdit) => {
+      if(err)
+      {
+          console.log(err);
+          res.end(err);
+      }
+      else
+      {
+          //show the edit view
+          res.render('editContact', {  // ← .EJS
+              title: 'Edit Item', 
+              item: itemToEdit,
+              userName: req.user ? req.user.username : '' 
+          })
+      }
+  });
+}

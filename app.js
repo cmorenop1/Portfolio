@@ -67,6 +67,8 @@ app.use(function (req, res, next) {
 
 //definicion de rutas
 app.use('/', indexRouter);
+
+
 app.use('/users', usersRouter);
 
 // catch 404 an forward to error handler

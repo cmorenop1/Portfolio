@@ -25,19 +25,31 @@
             <th>Email Address</th>
             <th>Action</th>
         </tr><br />
+
         <% for(e in data) { %>
         <tr>
             <td><%= data[e].contactName %></td>
             <td><%= data[e].contactNumber %></td>
             <td><%= data[e].email %></td>
-            <td>
-                <form>
-                    <button> ➖ </button>
-                </form>
-                <form>
-                    <button> ✏️ </button>
-                </form>
+
+            <!-- <td class="text-center">
+                <div>
+                    <button href="/users/editContact/<%= data[e]._id %>" class="btn btn-outline-primary"> ✍️</button>
+                    <button href="/users/deleteContact/<%= data[e]._id %>" class="btn btn-outline-danger"> ❌</button>
+                </div>
+            </td> -->
+
+            <td class="text-center">
+                <a href="/users/edit/<%= data[e]._id %>" class="btn btn-primary btn-sm">
+                <i class="fas fa-pencil-alt"></i></a>
+         
+      
+                <a href="/users/delete/<%=data[e]._id %>" class="btn btn-danger btn-sm">
+                <i class="fas fa-trash-alt"></i></a>
             </td>
+
+
+
         </tr>
         <% } %>
     </table>
