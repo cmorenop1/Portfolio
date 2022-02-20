@@ -1,4 +1,5 @@
 let User = require('../models/user');
+let businessModel = require('../models/businessModel');
 let passport = require('passport');
 
 module.exports.renderSignin = function (req, res, next) {
@@ -15,14 +16,38 @@ module.exports.renderSignin = function (req, res, next) {
 };
 
 module.exports.renderBusiness = function (req, res, next) {
-  if (req.user) {
-    res.render('business', {
-      title: 'Business',
-      messages: req.flash('error') || req.flash('info')
-    });
-  } else {
-    return res.redirect('/');
-  }
+
+  businessModel.find((err, bussinessList) => {
+
+    //console.log(bussinessList)
+
+    for (e in bussinessList) {
+
+      console.log(bussinessList[e])
+    }
+
+    if (req.user) {
+      res.render('business', {
+        title: 'Business Contacts',
+        messages: req.flash('error') || req.flash('info'),
+        //data: [1, 2, 3]
+        data: bussinessList
+      });
+    } else {
+      return res.redirect('/');
+    }
+
+
+
+  }).sort({
+    //contactName: -1,
+    contactName: 1, //ASCENDENT ORDER
+  })
+
+
+
+
+
 };
 
 module.exports.signin = function (req, res, next) {

@@ -26,7 +26,7 @@ router.post('/signup', userController.signup);
 router.get('/signin', userController.renderSignin);
 router.post('/signin', userController.signin);
 
-router.get('/business', userController.renderBusiness);
+router.get('/business', userController.renderBusiness); // ←
 
 /**
  * SIGN-OUT

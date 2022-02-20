@@ -11,10 +11,44 @@
         <%- include('../partials/header'); %>
     </header>
 
+
+    <table class="table">
+        <tr>
+            <th>Contact Name</th>
+            <th>Contact Number</th>
+            <th>Email Address</th>
+            <th>Action</th>
+        </tr><br />
+        <% for(e in data) { %>
+        <tr>
+            <td><%= data[e].contactName %></td>
+            <td><%= data[e].contactNumber %></td>
+            <td><%= data[e].email %></td>
+            <td>
+                <form>
+                    <button> 🍁 </button>
+                </form>
+                <form>
+                    <button> ➕ </button>
+                </form>
+                <form>
+                    <button> ➖ </button>
+                </form>
+                <form>
+                    <button> ✏️ </button>
+                </form>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+
+
+
     <p>
-        hello from the other side<br/>
         <%= title %>
     </p>
+
+
 
 
     <%- include('../partials/footer'); %>
