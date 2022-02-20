@@ -18,7 +18,7 @@
 
     <div class="hero-unit">
 
-        <form action="/users/edit" method="post" validate>
+        <form action="/users/edit/<%= item._id%>" method="post" >
             <div class="form-group">
                 <label>Contact Name</label>
                 <input type="text" name="name" class="form-control" />
@@ -33,25 +33,20 @@
             </div> 
             <br>
 
-            <div>
-                <input class="btn btn-primary" type="submit" value="Create" />
-            </div>
+            <!-- <td class="text-center">
+                <a href="/users/edit/<%= item._id%>" class="btn btn-primary btn-sm">
+                <i class="fas fa-pencil-alt"></i></a> -->
+
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-edit"></i> 
+                Submit
+            </button>
 
         </form>
 
 
     </div>
-
-    <form action="/users/add" method="post" validate>
-        <div class="form-group">
-            <label>Contact Name</label>
-            <input type="text" name="name" class="form-control" />
-        </div> 
-
-
-
-
-
+ 
     <%- include('../partials/footer'); %>
 </body>
 

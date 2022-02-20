@@ -80,7 +80,7 @@ module.exports.editContact = function (req, res, next) {
 
   let id = req.params.id;
 
-  console.log(` .:: Edit Contact ::. ${id}` )
+  console.log(` .:: Edit Contact ::. ${id}`)
 
   let newBusinessContact = businessModel({
 
@@ -199,19 +199,51 @@ module.exports.displayEditPage = (req, res, next) => {
   let id = req.params.id;
 
   businessModel.findById(id, (err, itemToEdit) => {
-      if(err)
-      {
-          console.log(err);
-          res.end(err);
-      }
-      else
-      {
-          //show the edit view
-          res.render('editContact', {  // ← .EJS
-              title: 'Edit Item', 
-              item: itemToEdit,
-              userName: req.user ? req.user.username : '' 
-          })
-      }
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      //show the edit view
+      res.render('editContact', { // ← .EJS
+        title: 'Edit Item',
+        item: itemToEdit,
+        userName: req.user ? req.user.username : ''
+      })
+    }
   });
+}
+
+
+
+module.exports.processEditPage = (req, res, next) => {
+
+  console.log(req.params.id)
+
+
+
+  let final_id = req.params.id
+
+  let updatedItem = businessModel({
+    _id: final_id.toString(),
+    id: final_id.toString(),
+    contactName: req.body.name.toString(),
+    contactNumber: req.body.number.toString(),
+    email: req.body.email.toString(),
+  });
+
+
+  businessModel.updateOne({
+    _id: final_id
+  }, updatedItem, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      res.redirect('/users/business');
+    }
+  });
+
+
+
+
 }

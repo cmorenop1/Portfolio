@@ -1,5 +1,11 @@
 let mongoose = require('mongoose');
+
+
+
 let Collectionname = "business"
+
+
+
 let businessModelSchema = mongoose.Schema({
 
   id: String,
@@ -12,4 +18,6 @@ let businessModelSchema = mongoose.Schema({
 });
 
 let CollectionSchema = businessModelSchema
+
+
 module.exports = mongoose.model(Collectionname, CollectionSchema);

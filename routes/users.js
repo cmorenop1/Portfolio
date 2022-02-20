@@ -30,13 +30,13 @@ router.get('/business', userController.renderBusiness); // ←
 router.post('/business', userController.newBusinessContact); // ←
 router.post('/add', userController.process); // ←
 
-router.get('/editContact/:id', userController.editContact); // ←
-router.get('/deleteContact/:id', userController.editContact); // ←
+// router.get('/editContact/:id', userController.editContact); // ←
+// router.get('/deleteContact/:id', userController.editContact); // ←
 
 
 // Routers for edit
 router.get('/edit/:id',  userController.displayEditPage);
-//router.get('/edit/:id',  userController.processEditPage);
+router.post('/edit/:id',  userController.processEditPage);
 
 
 /**
@@ -45,6 +45,10 @@ router.get('/edit/:id',  userController.displayEditPage);
  * → POST
  */
 router.get('/signout', userController.signout);
+
+
+// Delete
+//router.get('/delete/:id', inventoryController.performDelete);
 
 
 
