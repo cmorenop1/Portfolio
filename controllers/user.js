@@ -50,6 +50,28 @@ module.exports.renderBusiness = function (req, res, next) {
 
 };
 
+module.exports.newBusinessContact = function (req, res, next) {
+  res.render('newContact', {
+    title: 'New Business Contact',
+  })
+
+};
+module.exports.process = function (req, res, next) {
+
+  console.log('.:: SAVING ::.')
+
+  let newBusinessContact = businessModel({
+    _id: Date.now().toString(),
+    id: Date.now().toString(),
+    contactName: req.body.name,
+    contactNumber: req.body.number,
+    email: req.body.email,
+  });
+
+  res.send(newBusinessContact);
+
+};
+
 module.exports.signin = function (req, res, next) {
   passport.authenticate('local', {
     successRedirect: '/users/business',

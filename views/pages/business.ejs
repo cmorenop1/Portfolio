@@ -11,6 +11,12 @@
         <%- include('../partials/header'); %>
     </header>
 
+    <div class="hero-unit">
+        <h1> <%= title %></h1>
+    </div>
+
+    <form action="/users/business" method="post"><button> ➕ </button>
+    </form>
 
     <table class="table">
         <tr>
@@ -26,12 +32,6 @@
             <td><%= data[e].email %></td>
             <td>
                 <form>
-                    <button> 🍁 </button>
-                </form>
-                <form>
-                    <button> ➕ </button>
-                </form>
-                <form>
                     <button> ➖ </button>
                 </form>
                 <form>
@@ -44,9 +44,6 @@
 
 
 
-    <p>
-        <%= title %>
-    </p>
 
 
 
